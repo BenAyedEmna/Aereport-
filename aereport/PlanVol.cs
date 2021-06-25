@@ -11,7 +11,7 @@ namespace aereport
         private Aereport Aeroport_depart;
         public Aereport Aerport_arrive;
         private PositionMoment position_moment; 
-        private int essence; 
+        private string essence; 
 
     }
 }

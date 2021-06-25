@@ -25,5 +25,11 @@ namespace aereport
         private PlanVolReel plan_reel;
         private Etat etat; 
         private Position position ;
+
+        public vol(int num , DateTime ETA )
+        {
+            this.Numéro_vol = num;
+            this.ETA = ETA; 
+        }
     }
 }
