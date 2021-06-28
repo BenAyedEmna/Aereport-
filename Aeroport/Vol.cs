@@ -21,10 +21,10 @@ namespace aereport
         public DateTime PTA; //(Planned time arrival)
         public DateTime ETD; //(estimated time departure)
         public DateTime PTD; //(Planned time departure)
-        public PlanVolPlanifiee plan_planifiee { get; set; }
+        public PlanVolPlanifiee PlanPlanifiee { get; set; }
         
-        public PlanVolReel plan_reel { get; set; }
-        public Etat etat { get; set; }
+        public PlanVolReel PlanReel { get; set; }
+        public Etat Etat { get; set; }
         public Suivie PositionSuivie { get; set; }
         public 
             Vol(int num, DateTime eta, DateTime pta, DateTime etd, DateTime ptd , PlanVolPlanifiee planifiee , PlanVolReel  reel )
@@ -34,8 +34,8 @@ namespace aereport
             this.PTA = pta;
             this.ETD = etd;
             this.PTD = ptd;
-            this.plan_planifiee = planifiee;
-            this.plan_reel = reel; 
+            this.PlanPlanifiee= planifiee;
+            this.PlanReel= reel; 
         }
     }
 }

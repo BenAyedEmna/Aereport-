@@ -6,8 +6,8 @@ namespace aereport
 {
     public class PlanVolPlanifiee : PlanVol
     {
-        public DateTime TempsDepartPlanifiee;
-        public DateTime TempsArrieePlanifiee;
+        public DateTime TempsDepartPlanifiee { set; get; }
+        public DateTime TempsArrieePlanifiee { set; get; }
         public float QtEssenceNecessaire { get; set; }
 
         public List<Aereport> aeroport_alternative;

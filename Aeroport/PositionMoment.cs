@@ -6,6 +6,6 @@ namespace aereport
 {
     public class PositionMoment
     {
-        public Suivie position; 
+        public Suivie Position;
     } 
 }

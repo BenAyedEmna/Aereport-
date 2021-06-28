@@ -15,9 +15,9 @@ namespace aereport
     public class Suivie
     {
         public PositionSuivie position { get; set; }
-        public string altitude { get; set; }
-        public string lattitude { get; set;  }
-        public string longitude { get; set; }
-        public DateTime temps {get; set;}
+        public string Altitude { get; set; }
+        public string Lattitude { get; set;  }
+        public string Longitude { get; set; }
+        public DateTime Temps {get; set;}
     }
 }

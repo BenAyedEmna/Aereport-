@@ -6,14 +6,14 @@ namespace aereport
 {
     public class Avion
     {
-        public string Nom;
-        public int AnneeConstruction;
-        public string HistoriqueDeMaintenance;
-        public string TypeAvion;
-        public int CapaciteMaximal;
-        public Categorie Categorie;     
+        public string Nom { set; get; }
+        public int AnneeConstruction { set; get; }
+        public string HistoriqueDeMaintenance { set; get; }
+        public string TypeAvion { set; get; }
+        public int CapaciteMaximal { set; get; }
+        public Categorie Categorie { set; get; }
 
-        public Avion(string nom, int annee , string type , int max )
+        public Avion(string nom, int annee , string type , int max)
         {
             this.Nom=nom;
             this.AnneeConstruction = annee;
