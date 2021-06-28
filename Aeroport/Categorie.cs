@@ -4,10 +4,11 @@ using System.Text;
 
 namespace aereport
 {
-    class Categorie
+    public class Categorie
     {
-        public string nom;
-        private string description; 
+        public string nom { set; get; }
+        public string description { set; get; }
+        public Categorie CategorieGlobale { set; get; }
     }
 
 }

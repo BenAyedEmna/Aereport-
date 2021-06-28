@@ -14,22 +14,28 @@ namespace aereport
     }
 
     
-    class vol
+    class Vol
     {
-        private int Numéro_vol;
-        private DateTime ETA; //(estimated time arrival)
-        private DateTime PTA; //(Planned time arrival)
-        private DateTime ETD; //(estimated time departure)
-        private DateTime PTD; //(Planned time departure)
-        private PlanVolPlanifiee plan_planifiee;
-        private PlanVolReel plan_reel;
-        private Etat etat; 
-        private Position position ;
-
-        public vol(int num , DateTime ETA )
+        public int Numéro_vol; 
+        public DateTime ETA; //(estimated time arrival)
+        public DateTime PTA; //(Planned time arrival)
+        public DateTime ETD; //(estimated time departure)
+        public DateTime PTD; //(Planned time departure)
+        public PlanVolPlanifiee plan_planifiee { get; set; }
+        
+        public PlanVolReel plan_reel { get; set; }
+        public Etat etat { get; set; }
+        public Suivie PositionSuivie { get; set; }
+        public 
+            Vol(int num, DateTime eta, DateTime pta, DateTime etd, DateTime ptd , PlanVolPlanifiee planifiee , PlanVolReel  reel )
         {
             this.Numéro_vol = num;
-            this.ETA = ETA; 
+            this.ETA = eta;
+            this.PTA = pta;
+            this.ETD = etd;
+            this.PTD = ptd;
+            this.plan_planifiee = planifiee;
+            this.plan_reel = reel; 
         }
     }
 }

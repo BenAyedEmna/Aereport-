@@ -4,14 +4,15 @@ using System.Text;
 
 namespace aereport
 {
-    class PlanVol
+    public class PlanVol
     {
-        private DateTime departureTime;
-        private DateTime ArivalTime; 
-        private Aereport Aeroport_depart;
-        public Aereport Aerport_arrive;
-        private PositionMoment position_moment; 
-        private string essence; 
+        public Aereport AeroportDepart { get; set; }
+        public Aereport AerportArrive { get; set; }
 
+        public PlanVol(Aereport depart, Aereport arrive)
+        {
+            this.AeroportDepart = depart;
+            this.AerportArrive = arrive;
+        }
     }
 }

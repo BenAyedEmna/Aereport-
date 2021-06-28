@@ -4,20 +4,21 @@ using System.Text;
 
 namespace aereport
 {
-    class Avion
+    public class Avion
     {
-        private string Nom;
-        private int Annee_de_construction; 
-        private string Historique_de_maintenance;
-        private string Type_avion; 
-        private int Capacite_maximal;
-        private Categorie Categorie; 
+        public string Nom;
+        public int AnneeConstruction;
+        public string HistoriqueDeMaintenance;
+        public string TypeAvion;
+        public int CapaciteMaximal;
+        public Categorie Categorie;     
 
-        public Avion(string nom,int annee)
+        public Avion(string nom, int annee , string type , int max )
         {
             this.Nom=nom;
-            this.Annee_de_construction = annee; 
-
+            this.AnneeConstruction = annee;
+            this.TypeAvion = type;
+            this.CapaciteMaximal = max; 
         }
 
     }

@@ -4,9 +4,8 @@ using System.Text;
 
 namespace aereport
 {
-    class PositionMoment
+    public class PositionMoment
     {
-        private List<string> position;
-        private List<DateTime> moment; 
+        public Suivie position; 
     } 
 }
