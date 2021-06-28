@@ -6,13 +6,13 @@ namespace aereport
 {
     public class Aereport
     {
-        public string NomAeroport { set; get; }
+        public string Nom { set; get; }
         public string CodeIATA { set; get; }
         public string CodeICAO { set; get; }
 
         public Aereport(string nom)
         {
-            this.NomAeroport = nom; 
+            this.Nom = nom; 
         }
     }
 }

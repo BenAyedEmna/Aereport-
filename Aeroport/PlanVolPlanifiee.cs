@@ -7,14 +7,15 @@ namespace aereport
     public class PlanVolPlanifiee : PlanVol
     {
         public DateTime TempsDepartPlanifiee { set; get; }
-        public DateTime TempsArrieePlanifiee { set; get; }
+        public DateTime TempsArriveePlanifiee { set; get; }
         public double QtEssenceNecessaire { get; set; }
+        public List<Suivie> positionPlanifiee { get; set; }
 
-        public List<Aereport> aeroport_alternative;
+        public List<Aereport> AeroportAlternative { get; set; }
         public PlanVolPlanifiee(DateTime tempsdepart, DateTime tempsarrivee, Aereport depart, Aereport arrivee) : base(depart, arrivee) 
         {
             this.TempsDepartPlanifiee = tempsdepart;
-            this.TempsArrieePlanifiee = tempsarrivee;
+            this.TempsArriveePlanifiee = tempsarrivee;
         }
     }
 }

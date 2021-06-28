@@ -8,7 +8,7 @@ namespace aereport
     {
         public string Nom { set; get; }
         public string Description { set; get; }
-        public Categorie CategorieGlobale { set; get; }
+        public Categorie CategorieParent { set; get; }
     }
 
 }
