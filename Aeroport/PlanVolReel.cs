@@ -11,7 +11,7 @@ namespace aereport
         public DateTime TempsDepartReel { get; set; }
         public DateTime TempsArrieeReel { get; set; }
         public List<PositionMoment> positionMoment { get; set; }
-        public float QtEssenceConsommee { get; set; }
+        public double QtEssenceConsommee { get; set; }
 
         public PlanVolReel(DateTime tempsdepart, DateTime tempsarrivee, Aereport depart, Aereport arrive): base(depart, arrive) 
      {

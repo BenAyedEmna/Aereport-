@@ -8,7 +8,7 @@ namespace aereport
     {
         public DateTime TempsDepartPlanifiee { set; get; }
         public DateTime TempsArrieePlanifiee { set; get; }
-        public float QtEssenceNecessaire { get; set; }
+        public double QtEssenceNecessaire { get; set; }
 
         public List<Aereport> aeroport_alternative;
         public PlanVolPlanifiee(DateTime tempsdepart, DateTime tempsarrivee, Aereport depart, Aereport arrivee) : base(depart, arrivee) 
