@@ -4,6 +4,7 @@ using System.Text;
 
 
 
+
 namespace aereport
 {
     enum Etat
@@ -30,44 +31,49 @@ namespace aereport
             this.PlanReel=  reel; 
         }
 
-        public int retard(PlanVolPlanifiee planifiee, PlanVolReel reel) /* retourne 1 en cas de retard , 0 sinon */
+        public bool retard() 
         {
-            if (DateTime.Compare(reel.TempsArrieeReel, planifiee.TempsArriveePlanifiee) > 0)
-                return 1; 
-            return 0; 
+            if (DateTime.Compare(this.PlanReel.TempsArrieeReel, this.PlanPlanifiee.TempsArriveePlanifiee) > 0)
+                return true; 
+            return false; 
         }
 
-        public TimeSpan TempsRetard(PlanVolPlanifiee planifiee , PlanVolReel reel )
+        public TimeSpan TempsRetard()
         {
             TimeSpan r;
             //r= DateTime.Now - DateTime.Now; 
-            r=reel.TempsArrieeReel - planifiee.TempsArriveePlanifiee;
+            r=this.PlanReel.TempsArrieeReel - this.PlanPlanifiee.TempsArriveePlanifiee;
             return r; 
         }
 
-        public double VarrianceEssence(PlanVolPlanifiee planifiee, PlanVolReel reel)
+        public double VarrianceEssence()
         {
             double VarEssence; 
-            VarEssence =reel.QtEssenceConsommee -planifiee.QtEssenceNecessaire;
+            VarEssence =this.PlanReel.QtEssenceConsommee -this.PlanPlanifiee.QtEssenceNecessaire;
             return VarEssence; 
         }
 
-        public double EcartypeEssence(PlanVolPlanifiee planifiee, PlanVolReel reel)
+        public double EcartypeEssence()
         {
             double Ecartype;
-            Ecartype = Math.Sqrt(Math.Abs(VarrianceEssence(planifiee, reel)));
+            Ecartype = Math.Sqrt(Math.Abs(VarrianceEssence())); 
             return Ecartype; 
         }
 
-        //public List<Suivie> PositionNonRespectees((PlanVolPlanifiee planifiee, PlanVolReel reel) 
-        //{
-        //    List<Suivie> position = new List<Suivie>();
-
-
-
-        //    return position; 
-        //}
-
-
+        public List<Suivie> PositionNonRespectees()
+        {
+            List<Suivie> position = new List<Suivie>();
+            foreach(Suivie p in this.PlanPlanifiee.PositionPlanifiee)
+            {
+                foreach(Suivie r in this.PlanReel.PositionParcouru)
+                {
+                    if ((Math.Abs(p.Lattitude - r.Lattitude)) > 0.00001 && (Math.Abs(p.Longitude - r.Longitude)) > 0.00001 && (Math.Abs(p.Altitude - r.Altitude)) > 0.00001 && (Math.Abs((p.Temps - r.Temps).TotalSeconds)) > 0.00001) ;
+                    {
+                        position.Add(r); 
+                    }
+                }
+            }
+            return position;
+        }
     }
 }

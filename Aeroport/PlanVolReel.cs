@@ -10,7 +10,7 @@ namespace aereport
     {
         public DateTime TempsDepartReel { get; set; }
         public DateTime TempsArrieeReel { get; set; }
-        public List<Suivie> positionParcouru { get; set; }
+        public List<Suivie> PositionParcouru { get; set; }
         public double QtEssenceConsommee { get; set; }
 
         public PlanVolReel(DateTime tempsdepart, DateTime tempsarrivee, Aereport depart, Aereport arrive): base(depart, arrive) 

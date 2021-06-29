@@ -49,15 +49,17 @@ namespace aereport
 
             foreach (Vol Vol in ListVol)
             {
-                QteRetard = QteRetard + Vol.retard(Vol.PlanPlanifiee,Vol.PlanReel);
-                Retard = Vol.TempsRetard(Vol.PlanPlanifiee, Vol.PlanReel)+Retard;
-                EcartypeEssence = EcartypeEssence + Vol.EcartypeEssence(Vol.PlanPlanifiee, Vol.PlanReel); 
+                if (Vol.retard() == true)
+                    QteRetard++;
+                Retard = Vol.TempsRetard()+Retard;
+                EcartypeEssence = EcartypeEssence + Vol.EcartypeEssence(); 
 
             }
             RetardMinutes = Retard.TotalMinutes / QteRetard; 
             Console.WriteLine("La quantite des vol qui sont terminee et qui sont en retard par rapport a leur date de depart estimee est {0}", QteRetard );
             Console.WriteLine("La moyenne de leur retard est {0} ", RetardMinutes );
             Console.WriteLine("L'ecartype entre la quantite d'essence reelement consomme et celle planfiee est " +EcartypeEssence);
+        
         }
     }
 }
