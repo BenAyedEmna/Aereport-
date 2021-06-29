@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq; 
 
 
 
@@ -32,36 +33,30 @@ namespace aereport
             vol1 = new Vol(1, new DateTime(2021, 1, 1, 14, 30, 00), new DateTime(2021, 1, 1, 13, 00, 00), planP1, planR1);
             vol2 = new Vol(2, new DateTime(2021, 1, 2, 9, 30, 00), new DateTime(2021, 1, 2, 9, 00, 00), planP2, planR2);
 
+            int QteRetard = 0;
+            TimeSpan Retard;
+            double RetardMinutes;
+            double EcartypeEssence; 
 
             List<Vol> ListVol = new List<Vol>();
             ListVol.Add(vol1);
             ListVol.Add(vol2);
-            int i, c1, c2, qte;
-            qte =0;
-            double VarEssence, EcartypeEssence;
-            TimeSpan retard, MoyRetard;
-            retard = DateTime.Now - DateTime.Now;  //initisalisation du retard a 0 
 
-            for (i =0; i < ListVol.Count; i++)
-            {
-                c1 = DateTime.Compare(ListVol[i].ETA,ListVol[i].PlanReel.TempsArrieeReel);
-                c2 = DateTime.Compare(ListVol[i].PlanReel.TempsArrieeReel, DateTime.Now);
-                if (c1 < 0 && c2 < 0)
-                {
-                    qte++;
-                    retard = retard + (ListVol[i].PlanReel.TempsArrieeReel - ListVol[i].ETA);
-                }
-            }
-            Console.WriteLine("quantite de retard est {0}", qte);
-            MoyRetard = retard / qte;
+            IEnumerable<Vol> VolQuery =
+            from vol in ListVol
+            where vol.Etat == Etat.termine  
+            select vol;
 
-            foreach (Vol v in ListVol)
+            foreach (Vol Vol in ListVol)
             {
-                VarEssence = VarEssence + v.PlanReel.QtEssenceConsommee - v.PlanPlanifiee.QtEssenceNecessaire;
+                QteRetard = QteRetard + Vol.retard(Vol.PlanPlanifiee,Vol.PlanReel);
+                Retard = Vol.TempsRetard(Vol.PlanPlanifiee, Vol.PlanReel)+Retard;
+                EcartypeEssence = EcartypeEssence + Vol.EcartypeEssence(Vol.PlanPlanifiee, Vol.PlanReel); 
+
             }
-            EcartypeEssence = Math.Sqrt(Math.Abs(VarEssence));
-            Console.WriteLine("La quantite des vol qui sont terminee et qui sont en retard par rapport a leur date de depart estimee est " + qte);
-            Console.WriteLine("La moyenne de leur retard est {0} ", MoyRetard);
+            RetardMinutes = Retard.TotalMinutes / QteRetard; 
+            Console.WriteLine("La quantite des vol qui sont terminee et qui sont en retard par rapport a leur date de depart estimee est {0}", QteRetard );
+            Console.WriteLine("La moyenne de leur retard est {0} ", RetardMinutes );
             Console.WriteLine("L'ecartype entre la quantite d'essence reelement consomme et celle planfiee est " +EcartypeEssence);
         }
     }
