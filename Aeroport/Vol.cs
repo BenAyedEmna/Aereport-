@@ -28,10 +28,10 @@ namespace aereport
             this.Numero = num;
             this.ETA = eta;
             this.PlanPlanifiee = planifiee;
-            this.PlanReel=  reel; 
+            this.PlanReel=  reel;
         }
 
-        public bool retard() 
+        public bool Retard() 
         {
             if (this.Etat == Etat.termine)
             {
@@ -71,7 +71,7 @@ namespace aereport
             {
                 foreach(Suivie r in this.PlanReel.PositionParcouru)
                 {
-                    if ((Math.Abs(p.Lattitude - r.Lattitude)) > 0.00001 && (Math.Abs(p.Longitude - r.Longitude)) > 0.00001 && (Math.Abs(p.Altitude - r.Altitude)) > 0.00001 && (Math.Abs((p.Temps - r.Temps).TotalSeconds)) > 0.00001) ;
+                    if(p.Egale(r)==false)
                     {
                         position.Add(r); 
                     }

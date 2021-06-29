@@ -13,10 +13,11 @@ namespace aereport
         public List<Suivie> PositionParcouru { get; set; }
         public double QtEssenceConsommee { get; set; }
 
-        public PlanVolReel(DateTime tempsdepart, DateTime tempsarrivee, Aereport depart, Aereport arrive): base(depart, arrive) 
+        public PlanVolReel(DateTime tempsdepart, DateTime tempsarrivee, Aereport depart, Aereport arrive,List<Suivie> position): base(depart, arrive) 
         {
             this.TempsDepartReel = tempsdepart;
-            this.TempsArrieeReel = tempsarrivee; 
+            this.TempsArrieeReel = tempsarrivee;
+            this.PositionParcouru = position; 
         }
 
     }

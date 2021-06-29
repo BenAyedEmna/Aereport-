@@ -11,10 +11,11 @@ namespace aereport
         public double QtEssenceNecessaire { get; set; }
         public List<Suivie> PositionPlanifiee { get; set; }
         public List<Aereport> AeroportAlternative { get; set; }
-        public PlanVolPlanifiee(DateTime tempsdepart, DateTime tempsarrivee, Aereport depart, Aereport arrivee) : base(depart, arrivee) 
+        public PlanVolPlanifiee(DateTime tempsdepart, DateTime tempsarrivee, Aereport depart, Aereport arrivee, List<Suivie> Position) : base(depart, arrivee) 
         {
             this.TempsDepartPlanifiee = tempsdepart;
             this.TempsArriveePlanifiee = tempsarrivee;
+            this.PositionPlanifiee = Position ; 
         }
     }
 }

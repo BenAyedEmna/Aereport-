@@ -20,14 +20,42 @@ namespace aereport
             avion1 = new Avion("Airbus A330", 1992, "Avion d'affaires", 440);
             avion2 = new Avion("Learjet 45", 1992, "Avion d'affaires", 200);
 
+            Suivie suivieP1, suivieP2, suivieR1, suivieR2, suivieP3, suivieP4, suivieR3, suivieR4; 
+            List<Suivie> ListSuivieP1, ListSuivieP2, ListSuivieR1, ListSuivieR2;
+            ListSuivieP1 = new List<Suivie>();
+            ListSuivieR1 = new List<Suivie>();
+            ListSuivieP2 = new List<Suivie>();
+            ListSuivieR2 = new List<Suivie>();
+
+            suivieP1 = new Suivie(9.200,44,55,new DateTime(2021,1,1,5,30,00));
+            suivieR1 = new Suivie(9.200, 44, 55, new DateTime(2021, 1, 1, 7, 30, 00));
+            suivieP2 = new Suivie(11.000,40,55,new DateTime(2021,1,1,7,00,00)); ;
+            suivieR2 = new Suivie(9.200, 44, 55, new DateTime(2021,1,1,7,30,00));
+
+            suivieP3 = new Suivie(9.200, 44, 55, new DateTime(2021, 1, 2, 11, 30, 00));
+            suivieR3 = new Suivie(9.200, 44, 55, new DateTime(2021, 1, 1, 12, 30, 00));
+            suivieP4= new Suivie(11.000, 40, 55, new DateTime(2021, 1, 1, 11, 30, 00)); 
+            suivieR4 = new Suivie(9.200, 44, 55, new DateTime(2021, 1, 1, 11, 33, 00));
+
+            ListSuivieP1.Add(suivieP1);
+            ListSuivieP1.Add(suivieP2);
+            ListSuivieR1.Add(suivieR1);
+            ListSuivieR1.Add(suivieR2);
+
+            ListSuivieP2.Add(suivieP1);
+            ListSuivieP2.Add(suivieP2);
+            ListSuivieR2.Add(suivieR1);
+            ListSuivieR2.Add(suivieR2);
+
+
             PlanVolReel planR1, planR2;
             PlanVolPlanifiee planP1, planP2;
 
-            planR1 = new PlanVolReel(new DateTime(2021, 1, 1, 7, 00, 00), new DateTime(2021, 1, 1, 15, 00, 00), aereport1, aereport3);
-            planP1 = new PlanVolPlanifiee(new DateTime(2021, 1, 1, 5, 00, 00), new DateTime(2021, 1, 1, 13, 00, 00), aereport1, aereport3);
+            planR1 = new PlanVolReel(new DateTime(2021, 1, 1, 7, 00, 00), new DateTime(2021, 1, 1, 15, 00, 00), aereport1, aereport3, ListSuivieR1);
+            planP1 = new PlanVolPlanifiee(new DateTime(2021, 1, 1, 5, 00, 00), new DateTime(2021, 1, 1, 13, 00, 00), aereport1, aereport3, ListSuivieP1);
 
-            planR2 = new PlanVolReel(new DateTime(2021, 1, 2, 9, 00, 00), new DateTime(2021, 1, 2, 9, 30, 00), aereport1, aereport2);
-            planP2 = new PlanVolPlanifiee(new DateTime(2021, 1, 2, 8, 30, 00), new DateTime(2021, 1, 1, 9, 00, 00), aereport1, aereport2);
+            planR2 = new PlanVolReel(new DateTime(2021, 1, 2, 9, 00, 00), new DateTime(2021, 1, 2, 9, 30, 00), aereport1, aereport2,ListSuivieR2) ;
+            planP2 = new PlanVolPlanifiee(new DateTime(2021, 1, 2, 8, 30, 00), new DateTime(2021, 1, 1, 9, 00, 00), aereport1, aereport2,ListSuivieP2);
 
             Vol vol1, vol2;
             vol1 = new Vol(1, new DateTime(2021, 1, 1, 14, 30, 00), new DateTime(2021, 1, 1, 13, 00, 00), planP1, planR1);
@@ -49,7 +77,7 @@ namespace aereport
 
             foreach (Vol Vol in ListVol)
             {
-                if (Vol.retard() == true)
+                if (Vol.Retard() == true)
                     QteRetard++;
                 Retard = Vol.TempsRetard()+Retard;
                 EcartypeEssence = EcartypeEssence + Vol.EcartypeEssence(); 
