@@ -33,9 +33,13 @@ namespace aereport
 
         public bool retard() 
         {
-            if (DateTime.Compare(this.PlanReel.TempsArrieeReel, this.PlanPlanifiee.TempsArriveePlanifiee) > 0)
-                return true; 
-            return false; 
+            if (this.Etat == Etat.termine)
+            {
+                if (DateTime.Compare(this.PlanReel.TempsArrieeReel, this.PlanPlanifiee.TempsArriveePlanifiee) > 0)
+                    return true;
+                else
+                    return false;
+            }
         }
 
         public TimeSpan TempsRetard()
